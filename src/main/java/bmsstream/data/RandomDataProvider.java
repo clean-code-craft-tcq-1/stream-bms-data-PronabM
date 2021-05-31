@@ -12,14 +12,23 @@ public class RandomDataProvider implements IDataProvider {
 	public final static Float MIN_CR = 0f;
 	public final static Float MAX_CR = 0.8f;
 	private Random random = new Random();
+	private int nline = 10;
+	
+	@Override
+	public void setParam(String param) {
+		try{this.nline = Integer.parseInt(param);}
+		catch(Exception e) {}
+	}
 	
 	@Override
 	public String getNext() {
-		return new StringBuilder()
+		while(this.nline-->0)
+			return new StringBuilder()
 				.append(getTemp()).append(DELIMITER)
 				.append(getSOC()).append(DELIMITER)
 				.append(getCR())
 				.toString();
+		return null;
 	}
 
 	private Float getCR() {

@@ -1,12 +1,14 @@
 package bmsstream;
 
-import bmsstream.data.RandomDataProvider;
+import bmsstream.data.DataProviderResolver;
 
 public class Sender
 {
-    public static void main( String[] args )
+    public static void main(String[] args)
     {
-    	SenderService.setProvider(new RandomDataProvider());
-    	SenderService.stream(500);
+    	if(args.length > 1)
+    		SenderService.setProvider(DataProviderResolver.resolve(args[0], args[1]));
+    	SenderService.setProvider(DataProviderResolver.resolve("R", "10"));
+    	SenderService.stream();
     }
 }

@@ -15,10 +15,15 @@ public class SenderService {
 			SenderService.provider = provider;
 	}
 	
-	public static List<String> stream(int nline) {
+	public static List<String> stream() {
 		List<String> buffer = new ArrayList<String>();
-		while(nline-->0)
-			buffer.add(sendToConsole(provider.getNext()));
+		while(true)
+		{	
+			String next = provider.getNext();
+			if(next==null)
+				break;
+			buffer.add(sendToConsole(next));
+		}
 		sendToConsole(IDataProvider.EOF);
 		return buffer;
 	}
