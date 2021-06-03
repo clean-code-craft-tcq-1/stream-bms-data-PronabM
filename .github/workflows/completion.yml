@@ -22,4 +22,4 @@ jobs:
         path: ./target/site/jacoco
         retention-days: 1      
     - name: Execute Driver
-      run: bash ./.github/workflows/sender-exec.sh R 15 | bash ./.github/workflows/dummy-receiver-exec.sh
+      run: mvn compile exec:java -Dexec.mainClass="bmsstream.Sender" -Dexec.args="R 20" | bash ./.github/workflows/dummy-receiver-exec.sh
