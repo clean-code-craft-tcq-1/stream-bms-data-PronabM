@@ -8,7 +8,8 @@ public class Sender
     {
     	if(args.length > 1)
     		SenderService.setProvider(DataProviderResolver.resolve(args[0], args[1]));
-    	SenderService.setProvider(DataProviderResolver.resolve("R", "10"));
+        else
+    	    SenderService.setProvider(DataProviderResolver.resolve("R", "10"));
     	SenderService.stream();
     }
 }
