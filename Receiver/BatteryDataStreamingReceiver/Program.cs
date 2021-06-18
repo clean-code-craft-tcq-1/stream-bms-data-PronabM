@@ -25,7 +25,7 @@ namespace BatteryDataStreamingReceiver
                 if (i == 5)
                 {
                     batteryCharacteristics = batteryDataProcessor.GetMovingAverageValue(batteryData);
-                    message = string.Format("Moving Average Temperature - {0} Moving AveragetateOfCharge - {1}", 
+                    message = string.Format("Moving Average Temperature - {0} Moving Average StateOfCharge - {1}", 
                         batteryCharacteristics.Temperature.MovingAverage, batteryCharacteristics.StateOfCharge.MovingAverage);
                     Display(message);
                     batteryData = new List<string>();
