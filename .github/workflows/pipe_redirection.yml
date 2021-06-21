@@ -30,7 +30,7 @@ jobs:
         dotnet-version: 3.1.101
         
     - name: Build Sender
-      run: javac -cp "lib\*" src\main\java\bmsstream\Sender.java      
+      run: javac src\main\java\bmsstream\Sender.java      
     
     # Run the app
     - name: Run the Pipe
