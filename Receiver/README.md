@@ -20,7 +20,7 @@ Minimum StateOfCharge - 22 Maximum StateOfCharge - 72
 Moving Average Temperature - 14.2 Moving AveragetateOfCharge - 53.6
 
 
-### **Note: Moving average calculation starts after receiving the 5 values only**
+#### **Note: Moving average calculation starts after receiving the 5 values only**
 
 ## BatteryDataStreamingReceiverTests :
 - BatteryDataStreamingReceiverTest.cs class contains the tests for the BatteryDataStreamingReceiver project
