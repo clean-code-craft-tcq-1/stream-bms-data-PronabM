@@ -1,4 +1,4 @@
-# BatteryDataStreamingReceiver
+# Receiver
 
 There are basically 2 projects
 
