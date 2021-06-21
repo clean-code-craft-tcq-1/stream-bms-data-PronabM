@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 namespace BatteryDataStreamingReceiver
 {
@@ -29,22 +29,22 @@ namespace BatteryDataStreamingReceiver
 
         private void CalculateMinimumValue(BatteryParameter batteryParameter)
         {
-            batteryCharacteristics.Temperature.Minimum = Math.Min(batteryCharacteristics.Temperature.Minimum, batteryParameter.Temperature);
-            batteryCharacteristics.StateOfCharge.Minimum = Math.Min(batteryCharacteristics.StateOfCharge.Minimum, batteryParameter.StateOfCharge);
+            batteryCharacteristics.Temperature.MinimumTemperature = Math.Min(batteryCharacteristics.Temperature.MinimumTemperature, batteryParameter.Temperature);
+            batteryCharacteristics.StateOfCharge.MinimumSoc = Math.Min(batteryCharacteristics.StateOfCharge.MinimumSoc, batteryParameter.StateOfCharge);
         }
 
         private void CalculateMaximumValue(BatteryParameter batteryParameter)
         {
-            batteryCharacteristics.Temperature.Maximum = Math.Max(batteryCharacteristics.Temperature.Maximum, batteryParameter.Temperature);
-            batteryCharacteristics.StateOfCharge.Maximum = Math.Max(batteryCharacteristics.StateOfCharge.Maximum, batteryParameter.StateOfCharge);
+            batteryCharacteristics.Temperature.MaximumTemperature = Math.Max(batteryCharacteristics.Temperature.MaximumTemperature, batteryParameter.Temperature);
+            batteryCharacteristics.StateOfCharge.MaximumSoc = Math.Max(batteryCharacteristics.StateOfCharge.MaximumSoc, batteryParameter.StateOfCharge);
         }
 
         private void CalculateMovingAverage(List<BatteryParameter> batteryParameters)
         {
             if (batteryParameters.Count <= 0)
                 return;
-            batteryCharacteristics.Temperature.MovingAverage = batteryParameters[0].Temperature;
-            batteryCharacteristics.StateOfCharge.MovingAverage = batteryParameters[0].StateOfCharge;
+            batteryCharacteristics.Temperature.MovingAverageTemperature = batteryParameters[0].Temperature;
+            batteryCharacteristics.StateOfCharge.MovingAverageSoc = batteryParameters[0].StateOfCharge;
 
             double sumOfTemperature = 0;
             double sumOfStateOfCharge = 0;
@@ -53,8 +53,8 @@ namespace BatteryDataStreamingReceiver
                 sumOfTemperature += batteryParameter.Temperature;
                 sumOfStateOfCharge += batteryParameter.StateOfCharge;
             }
-            batteryCharacteristics.Temperature.MovingAverage = sumOfTemperature / batteryParameters.Count;
-            batteryCharacteristics.StateOfCharge.MovingAverage = sumOfStateOfCharge / batteryParameters.Count;
+            batteryCharacteristics.Temperature.MovingAverageTemperature = sumOfTemperature / batteryParameters.Count;
+            batteryCharacteristics.StateOfCharge.MovingAverageSoc = sumOfStateOfCharge / batteryParameters.Count;
         }
     }
 }
