@@ -1,0 +1,39 @@
+name: Pipe redirection
+
+on: [push, pull_request]
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Debug]
+
+    runs-on: windows-latest  # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+        
+     - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+        
+    - name: Build Sender
+      run: mvn compile exec:java -Dexec.mainClass="bmsstream.Sender" -Dexec.args="R 20"
+    
+    # Run the app
+    - name: Run the App
+      shell: cmd
+      timeout-minutes: 1
+      run: mvn compile exec:java -Dexec.mainClass="bmsstream.Sender" -Dexec.args="R 20" | dotnet run --project Receiver\BatteryDataStreamingReceiver\BatteryDataStreamingReceiver.csproj
