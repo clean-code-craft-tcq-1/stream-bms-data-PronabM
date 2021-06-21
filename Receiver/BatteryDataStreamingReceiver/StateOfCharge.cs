@@ -1,19 +1,19 @@
-﻿namespace BatteryDataStreamingReceiver
+namespace BatteryDataStreamingReceiver
 {
     public class StateOfCharge
     {
-        private double _minimum = double.MaxValue;
-        public double Minimum
+        private double _minimumSoc = double.MaxValue;
+        public double MinimumSoc
         {
-            get { return _minimum; }
-            set { _minimum = value; }
+            get { return _minimumSoc; }
+            set { _minimumSoc = value; }
         }
-        private double _maximum = double.MinValue;
-        public double Maximum
+        private double _maximumSoc = double.MinValue;
+        public double MaximumSoc
         {
-            get { return _maximum; }
-            set { _maximum = value; }
+            get { return _maximumSoc; }
+            set { _maximumSoc = value; }
         }
-        public double MovingAverage { get; set; }
+        public double MovingAverageSoc { get; set; }
     }
 }
