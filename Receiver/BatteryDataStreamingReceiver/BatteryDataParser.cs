@@ -18,8 +18,8 @@ namespace BatteryDataStreamingReceiver
             {
                 BatteryParameter batteryParameter = new BatteryParameter();
                 string[] batteryParameterValues = parameter.Split(delimeter);
-                batteryParameter.Temperature = Convert.ToDouble(batteryParameterValues[0]);
-                batteryParameter.StateOfCharge = Convert.ToDouble(batteryParameterValues[1]);
+                batteryParameter.Temperature = Convert.ToDouble(batteryParameterValues[0], CultureInfo.InvariantCulture);
+                batteryParameter.StateOfCharge = Convert.ToDouble(batteryParameterValues[1], CultureInfo.InvariantCulture);
                 batteryParameters.Add(batteryParameter);
             }
             return batteryParameters;
