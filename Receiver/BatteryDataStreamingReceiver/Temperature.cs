@@ -1,19 +1,23 @@
-﻿namespace BatteryDataStreamingReceiver
+namespace BatteryDataStreamingReceiver
 {
     public class Temperature
     {
-        private double _minimum = double.MaxValue;
-        public double Minimum
+        private double _minimumTemperature = double.MaxValue;
+
+        public double MinimumTemperature
         {
-            get { return _minimum; }
-            set { _minimum = value; }
+            get { return _minimumTemperature; }
+            set { _minimumTemperature = value; }
         }
-        private double _maximum = double.MinValue;
-        public double Maximum
+
+        private double _maximumTemperature = double.MinValue;
+
+        public double MaximumTemperature
         {
-            get { return _maximum; }
-            set { _maximum = value; }
+            get { return _maximumTemperature; }
+            set { _maximumTemperature = value; }
         }
-        public double MovingAverage { get; set; }
+
+        public double MovingAverageTemperature { get; set; }
     }
 }
