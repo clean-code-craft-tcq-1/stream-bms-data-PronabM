@@ -10,7 +10,7 @@ jobs:
       matrix:
         configuration: [Debug]
 
-    runs-on: ubuntu-latest  # For a list of available runner types, refer to
+    runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     steps:
@@ -30,8 +30,10 @@ jobs:
         dotnet-version: 3.1.101
         
     - name: Build Sender
-      run: mvn compile exec:java -Dexec.mainClass="bmsstream.Sender" -Dexec.args="R 20"      
+      run: javac -cp "lib\*" src\main\java\bmsstream\Sender.java      
     
     # Run the app
     - name: Run the Pipe
-      run: mvn compile exec:java -Dexec.mainClass="bmsstream.Sender" -Dexec.args="R 20" | dotnet run --project Receiver/BatteryDataStreamingReceiver/BatteryDataStreamingReceiver.csproj
+      shell: cmd
+      timeout-minutes: 1
+      run: call run_pipe.bat
