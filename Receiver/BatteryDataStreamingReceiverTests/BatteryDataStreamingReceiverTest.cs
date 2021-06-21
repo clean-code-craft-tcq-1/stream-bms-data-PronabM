@@ -68,7 +68,7 @@ namespace BatteryDataStreamingReceiverTests
             {
                 batteryCharacteristics = batteryDataProcessor.GetMinimumAndMaximumValues(batteryData[i]);
             }
-            Assert.Equal(batteryCharacteristics.Temperature.Minimum, expectedTemperature);
+            Assert.Equal(batteryCharacteristics.Temperature.MinimumTemperature, expectedTemperature);
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace BatteryDataStreamingReceiverTests
             {
                 batteryCharacteristics = batteryDataProcessor.GetMinimumAndMaximumValues(batteryData[i]);
             }
-            Assert.Equal(batteryCharacteristics.Temperature.Maximum, expectedTemperature);
+            Assert.Equal(batteryCharacteristics.Temperature.MaximumTemperature, expectedTemperature);
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace BatteryDataStreamingReceiverTests
             {
                 batteryCharacteristics = batteryDataProcessor.GetMinimumAndMaximumValues(batteryData[i]);
             }
-            Assert.Equal(batteryCharacteristics.StateOfCharge.Minimum, expectedStateOfCharge);
+            Assert.Equal(batteryCharacteristics.StateOfCharge.MinimumSoc, expectedStateOfCharge);
         }
 
         [Fact]
@@ -107,7 +107,7 @@ namespace BatteryDataStreamingReceiverTests
             {
                 batteryCharacteristics = batteryDataProcessor.GetMinimumAndMaximumValues(batteryData[i]);
             }
-            Assert.Equal(batteryCharacteristics.StateOfCharge.Maximum, expectedStateOfCharge);
+            Assert.Equal(batteryCharacteristics.StateOfCharge.MaximumSoc, expectedStateOfCharge);
         }
 
         [Fact]
@@ -116,7 +116,7 @@ namespace BatteryDataStreamingReceiverTests
             BatteryDataProcessor batteryDataProcessor = new BatteryDataProcessor(batteryDataParser);
             double expectedTemperature = 26.8;
             BatteryCharacteristics batteryCharacteristics = batteryDataProcessor.GetMovingAverageValue(batteryData);
-            Assert.Equal(batteryCharacteristics.Temperature.MovingAverage, expectedTemperature);
+            Assert.Equal(batteryCharacteristics.Temperature.MovingAverageTemperature, expectedTemperature);
         }
         
         [Fact]
@@ -125,7 +125,7 @@ namespace BatteryDataStreamingReceiverTests
             BatteryDataProcessor batteryDataProcessor = new BatteryDataProcessor(batteryDataParser);
             double expectedStateOfCharge = 41;
             BatteryCharacteristics batteryCharacteristics = batteryDataProcessor.GetMovingAverageValue(batteryData);
-            Assert.Equal(batteryCharacteristics.StateOfCharge.MovingAverage, expectedStateOfCharge);
+            Assert.Equal(batteryCharacteristics.StateOfCharge.MovingAverageSoc, expectedStateOfCharge);
         }
     }
 }
