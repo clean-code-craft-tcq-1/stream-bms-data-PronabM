@@ -22,6 +22,7 @@ public class SenderService {
 			String next = provider.getNext();
 			if(next==null)
 				break;
+			
 			buffer.add(sendToConsole(next));
 		}
 		sendToConsole(IDataProvider.EOF);
